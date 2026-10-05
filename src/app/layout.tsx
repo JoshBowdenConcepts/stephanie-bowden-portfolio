@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Stephanie Bowden",
-  description: "The portfolio of Stephanie Bowden. Coming soon.",
+  description:
+    "Stephanie Bowden is a senior product designer specializing in design systems and data visualization.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
