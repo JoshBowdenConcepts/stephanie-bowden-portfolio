@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   output: "export",
   distDir: "dist",
+  trailingSlash: true,
   basePath,
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
   images: { unoptimized: true },

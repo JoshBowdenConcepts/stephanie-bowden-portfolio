@@ -1,0 +1,56 @@
+.metrics {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 36px 24px 24px;
+  background: #4f1a2d;
+  container-type: inline-size;
+}
+
+.value {
+  margin: 0;
+  font-size: clamp(20px, 15cqi, 34px);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: #f6b3ea;
+  overflow-wrap: anywhere;
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.caption {
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: #e7c6dd;
+}
+
+@media (min-width: 640px) {
+  .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .metric {
+    padding: 44px 20px 28px;
+  }
+}

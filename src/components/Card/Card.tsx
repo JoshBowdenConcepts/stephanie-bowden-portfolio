@@ -1,25 +1,39 @@
+import Link from "next/link";
+import Badge from "@/components/Badge/Badge";
 import styles from "./Card.module.css";
 
 interface CardProps {
+  href: string;
   title: string;
   subtitle: string;
   description: string;
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: string;
+  badge?: string;
 }
 
 export default function Card({
+  href,
   title,
   subtitle,
   description,
   imageSrc,
   imageAlt = "",
+  imagePosition,
+  badge,
 }: CardProps) {
   return (
-    <article className={styles.card}>
+    <Link className={styles.card} href={href}>
+      {badge && <Badge className={styles.badge}>{badge}</Badge>}
       {imageSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={styles.image} src={imageSrc} alt={imageAlt} />
+        <img
+          className={styles.image}
+          src={imageSrc}
+          alt={imageAlt}
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
+        />
       ) : (
         <div className={styles.placeholder} aria-hidden="true" />
       )}
@@ -30,6 +44,6 @@ export default function Card({
           {description}
         </p>
       </div>
-    </article>
+    </Link>
   );
 }

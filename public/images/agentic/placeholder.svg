@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#f4f4f5"/>
+
+  <!-- Chat panel -->
+  <g>
+    <rect x="64" y="72" width="300" height="356" rx="20" fill="#ffffff"/>
+    <rect x="64.5" y="72.5" width="299" height="355" rx="19.5" stroke="#e4e4e7"/>
+
+    <!-- User message -->
+    <rect x="148" y="104" width="188" height="64" rx="16" fill="#111111"/>
+    <rect x="166" y="122" width="140" height="10" rx="5" fill="#ffffff"/>
+    <rect x="166" y="142" width="96" height="10" rx="5" fill="#ffffff" opacity="0.6"/>
+
+    <!-- Assistant message -->
+    <circle cx="104" cy="208" r="16" fill="#111111"/>
+    <path d="M104 198 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="#ffffff"/>
+    <rect x="132" y="192" width="204" height="108" rx="16" fill="#f4f4f5"/>
+    <rect x="150" y="210" width="150" height="10" rx="5" fill="#d4d4d8"/>
+    <rect x="150" y="230" width="120" height="10" rx="5" fill="#d4d4d8"/>
+    <rect x="150" y="256" width="72" height="26" rx="13" fill="#ffffff" stroke="#d4d4d8"/>
+    <rect x="230" y="256" width="88" height="26" rx="13" fill="#ffffff" stroke="#d4d4d8"/>
+
+    <!-- Input -->
+    <rect x="88" y="364" width="252" height="40" rx="20" fill="#f4f4f5"/>
+    <rect x="108" y="380" width="120" height="8" rx="4" fill="#d4d4d8"/>
+    <circle cx="318" cy="384" r="12" fill="#111111"/>
+    <path d="M313 384 h10 M319 380 l4 4 -4 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Connector -->
+  <path d="M372 250 C 392 250, 392 250, 412 250" stroke="#111111" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>
+
+  <!-- Generated chart -->
+  <g>
+    <rect x="420" y="112" width="316" height="276" rx="20" fill="#ffffff"/>
+    <rect x="420.5" y="112.5" width="315" height="275" rx="19.5" stroke="#e4e4e7"/>
+    <rect x="448" y="140" width="128" height="12" rx="6" fill="#111111"/>
+    <rect x="448" y="162" width="80" height="8" rx="4" fill="#d4d4d8"/>
+
+    <g stroke="#ececee">
+      <line x1="448" y1="210" x2="708" y2="210"/>
+      <line x1="448" y1="260" x2="708" y2="260"/>
+      <line x1="448" y1="310" x2="708" y2="310"/>
+    </g>
+    <line x1="448" y1="356" x2="708" y2="356" stroke="#d4d4d8"/>
+
+    <g fill="#d4d4d8">
+      <rect x="462" y="290" width="26" height="66" rx="4"/>
+      <rect x="504" y="262" width="26" height="94" rx="4"/>
+      <rect x="546" y="276" width="26" height="80" rx="4"/>
+      <rect x="588" y="236" width="26" height="120" rx="4"/>
+      <rect x="630" y="222" width="26" height="134" rx="4"/>
+      <rect x="672" y="196" width="26" height="160" rx="4" fill="#111111"/>
+    </g>
+    <polyline points="475,270 517,244 559,254 601,214 643,200 685,176" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ffffff" stroke="#111111" stroke-width="3">
+      <circle cx="475" cy="270" r="5"/>
+      <circle cx="517" cy="244" r="5"/>
+      <circle cx="559" cy="254" r="5"/>
+      <circle cx="601" cy="214" r="5"/>
+      <circle cx="643" cy="200" r="5"/>
+      <circle cx="685" cy="176" r="5"/>
+    </g>
+  </g>
+</svg>

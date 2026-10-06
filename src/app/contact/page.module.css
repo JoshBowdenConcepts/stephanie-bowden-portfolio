@@ -1,0 +1,64 @@
+.contact {
+  max-width: calc(1120px + 40px);
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: var(--text-caption);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.value {
+  margin: 0;
+  min-width: 0;
+}
+
+.link {
+  display: inline-block;
+  padding-block: 6px;
+  font-size: clamp(20px, 5.5vw, 32px);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  overflow-wrap: anywhere;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    text-decoration-color: var(--color-text-muted);
+  }
+}
+
+@media (min-width: 768px) {
+  .contact {
+    max-width: calc(1120px + 64px);
+    padding: 72px 32px 112px;
+  }
+}
