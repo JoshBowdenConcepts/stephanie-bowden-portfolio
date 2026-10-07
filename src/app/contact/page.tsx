@@ -11,7 +11,15 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <Hero compact heading="Contact" back={<BackButton href="/" />}>
+      <Hero
+        compact
+        heading="Contact"
+        back={<BackButton href="/" />}
+        image={{
+          src: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/stephanie-bowden.jpg`,
+          alt: "Stephanie Bowden smiling outdoors in front of a wooden fence.",
+        }}
+      >
         I’d love to hear from you, whether it’s about a role, a project, or
         design systems and data visualization.
       </Hero>

@@ -18,6 +18,46 @@
   margin: 0 auto;
 }
 
+.toolbar {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.withImage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  min-width: 0;
+}
+
+.photo {
+  flex-shrink: 0;
+  width: clamp(120px, 32vw, 168px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 32%;
+}
+
+@media (min-width: 768px) {
+  .withImage {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .photo {
+    width: clamp(140px, 16vw, 200px);
+  }
+}
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -112,6 +152,10 @@
 }
 
 .compact .inner {
+  gap: 12px;
+}
+
+.compact .content {
   gap: 12px;
 }
 
