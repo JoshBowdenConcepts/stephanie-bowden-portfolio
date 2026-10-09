@@ -46,6 +46,19 @@
   object-position: 50% 32%;
 }
 
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    width: calc(100% - 200px - 64px);
+  }
+}
+
 @media (min-width: 768px) {
   .withImage {
     flex-direction: row;
@@ -155,6 +168,10 @@
   gap: 12px;
 }
 
+.compact .banner + div {
+  margin-top: 24px;
+}
+
 .compact .content {
   gap: 12px;
 }
@@ -171,5 +188,15 @@
 @media (min-width: 768px) {
   .compact {
     padding-block: 20px 32px;
+  }
+}
+
+.compact:has(.banner) {
+  padding-block: 40px 48px;
+}
+
+@media (min-width: 768px) {
+  .compact:has(.banner) {
+    padding-block: 56px 64px;
   }
 }

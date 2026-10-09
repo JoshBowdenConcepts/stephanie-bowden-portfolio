@@ -26,6 +26,11 @@
   margin-top: 24px;
 }
 
+.more:has(> .subheading:first-child),
+.title + .more {
+  margin-top: 0;
+}
+
 .description > * {
   margin: 0 0 16px;
 }
@@ -57,6 +62,15 @@
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
   color: var(--color-text);
+}
+
+.title + .more > .subheading:first-child,
+.description + .more > .subheading:first-child {
+  margin-top: 0;
+}
+
+.more + .more > .subheading:first-child {
+  margin-top: 16px;
 }
 
 .media,

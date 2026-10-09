@@ -8,7 +8,7 @@ interface HeroProps {
   compact?: boolean;
   back?: ReactNode;
   actions?: ReactNode;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; layout?: "portrait" | "banner" };
   children: ReactNode;
 }
 
@@ -22,14 +22,21 @@ export default function Hero({
   image,
   children,
 }: HeroProps) {
+  const portrait = image?.layout === "banner" ? undefined : image;
+  const banner = image?.layout === "banner" ? image : undefined;
+
   return (
     <section className={`${styles.hero} ${compact ? styles.compact : ""}`}>
       <div className={styles.inner}>
         {back && <div className={styles.toolbar}>{back}</div>}
-        <div className={image ? styles.withImage : undefined}>
-          {image && (
+        {banner && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className={styles.banner} src={banner.src} alt={banner.alt} />
+        )}
+        <div className={portrait ? styles.withImage : undefined}>
+          {portrait && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img className={styles.photo} src={image.src} alt={image.alt} />
+            <img className={styles.photo} src={portrait.src} alt={portrait.alt} />
           )}
           <div className={styles.content}>
             <div className={styles.intro}>

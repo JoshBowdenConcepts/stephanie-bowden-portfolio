@@ -9,6 +9,7 @@ import Lightbox from "@/components/Lightbox/Lightbox";
 import Metrics from "@/components/Metrics/Metrics";
 import PageNav from "@/components/PageNav/PageNav";
 import ProjectLayout from "@/components/ProjectLayout/ProjectLayout";
+import Testimonial from "@/components/Testimonial/Testimonial";
 import { getProject, projects, type ProjectMedia } from "@/data/projects";
 import styles from "./page.module.css";
 
@@ -68,6 +69,15 @@ export default async function ProjectPage({
       heading={project.title}
       subtitle={project.subtitle}
       back={<BackButton href="/" />}
+      image={
+        project.thumbnail?.hero
+          ? {
+              src: `${basePath}${project.thumbnail.src}`,
+              alt: project.thumbnail.alt,
+              layout: "banner",
+            }
+          : undefined
+      }
     >
       {project.description}
     </Hero>
@@ -96,7 +106,16 @@ export default async function ProjectPage({
           />
         }
       >
-        <Metrics items={project.metrics} />
+        {project.testimonial && (
+          <Testimonial
+            quote={project.testimonial.quote}
+            href={project.testimonial.href}
+            linkLabel={project.testimonial.linkLabel}
+          />
+        )}
+        {project.metrics && project.metrics.length > 0 && (
+          <Metrics items={project.metrics} />
+        )}
         {project.sections.map((section) => (
           <section
             key={section.id}
@@ -107,48 +126,52 @@ export default async function ProjectPage({
             <h2 id={`${section.id}-title`} className={styles.title}>
               {section.title}
             </h2>
-            <div className={styles.description}>
-              {section.intro && <p>{section.intro}</p>}
-              {section.bullets && (
-                <ul>
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              )}
-              {section.paragraphs?.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            {(section.intro || section.bullets || section.paragraphs) && (
+              <div className={styles.description}>
+                {section.intro && <p>{section.intro}</p>}
+                {section.bullets && (
+                  <ul>
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+                {section.paragraphs?.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            )}
             <SectionMedia media={section.media} />
             {section.more?.map((block, index) => (
               <Fragment key={index}>
-                <div className={`${styles.description} ${styles.more}`}>
-                  {block.paragraphs?.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                  {block.heading && (
-                    <h3 className={styles.subheading}>{block.heading}</h3>
-                  )}
-                  {block.bullets && (
-                    <ul>
-                      {block.bullets.map((bullet, bulletIndex) => (
-                        <li key={bulletIndex}>
-                          {bullet.lead && <strong>{bullet.lead}</strong>}
-                          {bullet.lead && bullet.text && " "}
-                          {bullet.text}
-                          {bullet.children && (
-                            <ul>
-                              {bullet.children.map((child) => (
-                                <li key={child}>{child}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+                {(block.heading || block.paragraphs || block.bullets) && (
+                  <div className={`${styles.description} ${styles.more}`}>
+                    {block.heading && (
+                      <h3 className={styles.subheading}>{block.heading}</h3>
+                    )}
+                    {block.paragraphs?.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    {block.bullets && (
+                      <ul>
+                        {block.bullets.map((bullet, bulletIndex) => (
+                          <li key={bulletIndex}>
+                            {bullet.lead && <strong>{bullet.lead}</strong>}
+                            {bullet.lead && bullet.text && " "}
+                            {bullet.text}
+                            {bullet.children && (
+                              <ul>
+                                {bullet.children.map((child) => (
+                                  <li key={child}>{child}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
                 {block.metrics && <Metrics items={block.metrics} />}
                 <SectionMedia media={block.media} />
               </Fragment>
