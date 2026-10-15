@@ -31,6 +31,10 @@
   margin-top: 0;
 }
 
+.description:has(> ul) + .more:has(> .subheading:first-child) {
+  margin-top: 16px;
+}
+
 .description > * {
   margin: 0 0 16px;
 }

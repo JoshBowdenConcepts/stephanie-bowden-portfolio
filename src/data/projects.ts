@@ -8,6 +8,7 @@ export interface MediaFile {
   type: "image" | "video";
   src: string;
   alt: string;
+  caption?: string;
 }
 
 export interface MediaPlaceholder {
@@ -23,6 +24,7 @@ export interface ProjectSection {
   intro?: string;
   bullets?: string[];
   paragraphs?: string[];
+  details?: { label: string; text: string }[];
   /** Omit to show a placeholder; set to `null` for no media. */
   media?: ProjectMedia | ProjectMedia[] | null;
   more?: ProjectSectionBlock[];
@@ -97,6 +99,8 @@ export const projects: Project[] = [
       {
         id: "the-problem",
         title: "The problem",
+        intro:
+          "When I joined, patterns and visuals were inconsistent and at times outdated or broken.",
         bullets: [
           "Chart patterns and visuals varied widely across teams",
           "Designers and engineers often rebuilt similar solutions for each product area",
@@ -106,13 +110,23 @@ export const projects: Project[] = [
         paragraphs: [
           "As the platform scaled and the company went through a large rebrand, it was critical for the product to establish reusable scalable components and patterns to improve usability, establish trust in our data, and improve both design and engineerings speed.",
         ],
+        details: [
+          {
+            label: "My role",
+            text: "Senior Product Designer (Design Systems)",
+          },
+          {
+            label: "Cross functional team",
+            text: "Component Library Engineers, Product designers across the product pillars, Product Managers, Product Engineers",
+          },
+        ],
         media: null,
       },
       {
         id: "discovery",
         title: "Discovery",
         intro:
-          "I did iterative rounds of discovery through auditing the data experience across the entire product. Met with designers, PM’s, Engineers and customers to help uncover:",
+          "I did iterative rounds of discovery through auditing the data experience across the entire product. Met with designers, product managers, engineers and customers to help uncover:",
         bullets: [
           "Gaps in chart types and interactions",
           "Inconsistent patterns and behaviors across similar data experiences",
@@ -127,21 +141,65 @@ export const projects: Project[] = [
       {
         id: "design",
         title: "Design",
-        intro:
-          "Created detailed design specs that defined the visual details and behaviors required to scale the components. Including:",
-        bullets: [
-          "The purpose of the component",
-          "Token usage - colors, fonts, spacing, etc.",
-          "States - entry, empty, loading, data density, etc.",
-          "Accessibility - color, font, keyboard interactions",
-          "Figma component used by all the designers to create their designs",
+        paragraphs: [
+          "My process involved deep thinking, collaboration, detailed design, documentation and mentorship to ensure I was designing components that were consistent but scaled well.",
         ],
-        media: [
+        media: null,
+        more: [
           {
-            type: "image",
-            src: "/images/ascent/click-interactions-full-spec.svg",
-            alt: "Overview of the chart click interactions spec, organized into four parts: Concept, Guidelines, Technical Information, and Future Work.",
+            heading: "Chart filtering",
+            paragraphs: [
+              "Chart filtering was inconsistent across the product, with dropdown menus blocking the data and duplicating legend content, which made for a poor user experience. I designed a consistent filtering pattern and partnered with product teams to roll it out across the product.",
+            ],
+            media: [
+              {
+                type: "video",
+                src: "/images/ascent/growth-filtering-b%26a.mov",
+                alt: "Before and after of chart filtering on a growth chart.",
+              },
+              {
+                type: "video",
+                src: "/images/ascent/deliverability-filtering-b%26a.mov",
+                alt: "Before and after of chart filtering on a deliverability chart.",
+              },
+              {
+                type: "video",
+                src: "/images/ascent/engagment-filtering-b%26a.mov",
+                alt: "Before and after of chart filtering on an engagement chart.",
+              },
+            ],
           },
+          {
+            heading: "Usability research",
+            paragraphs: [
+              "Iterated on design solutions and integrated user research and customer data into design decisions, particularly for complex chart interactions.",
+              "Used usability testing and customer insights to advocate for interaction details that improved clarity, accessibility, and overall experience.",
+              "Cross-functional collaboration with product managers and engineers to align design intent with technical feasibility, iterating collaboratively when constraints arose.",
+            ],
+            media: {
+              type: "image",
+              src: "/images/ascent/research2.gif",
+              alt: "Recording of a remote usability session: a participant toggles the Clicks, Conversions, Delivered, and Opens legend items on a Campaign Performance line chart prototype.",
+            },
+          },
+          {
+            heading: "Chart click interactions",
+            paragraphs: [
+              "For each component I created detailed design specs that defined the visual details and behaviors required to scale the components. Including:",
+            ],
+            bullets: [
+              { text: "The purpose of the component" },
+              { text: "Token usage - colors, fonts, spacing, etc." },
+              { text: "States - entry, empty, loading, data density, etc." },
+              { text: "Accessibility - color, font, keyboard interactions" },
+              { text: "Figma component used by all the designers to create their designs" },
+            ],
+            media: [
+              {
+                type: "image",
+                src: "/images/ascent/click-interactions-full-spec.svg",
+                alt: "Overview of the chart click interactions spec, organized into four parts: Concept, Guidelines, Technical Information, and Future Work.",
+              },
           {
             type: "image",
             src: "/images/ascent/click-interactions-concept2.svg",
@@ -162,21 +220,9 @@ export const projects: Project[] = [
             src: "/images/ascent/click-interactions-line.svg",
             alt: "Line chart guidelines showing single select, select all by baseline grouping, select all by category, and multi select states with the Chart Popover.",
           },
+            ],
+          },
         ],
-      },
-      {
-        id: "usability-research",
-        title: "Usability research",
-        paragraphs: [
-          "Iterated on design solutions and integrated user research and customer data into design decisions, particularly for complex chart interactions.",
-          "Used usability testing and customer insights to advocate for interaction details that improved clarity, accessibility, and overall experience.",
-          "Cross-functional collaboration with product managers and engineers to align design intent with technical feasibility, iterating collaboratively when constraints arose.",
-        ],
-        media: {
-          type: "image",
-          src: "/images/ascent/research2.gif",
-          alt: "Recording of a remote usability session: a participant toggles the Clicks, Conversions, Delivered, and Opens legend items on a Campaign Performance line chart prototype.",
-        },
       },
       {
         id: "documentation",
@@ -200,7 +246,7 @@ export const projects: Project[] = [
       },
       {
         id: "my-role",
-        title: "My role",
+        title: "Supporting product",
         intro: "My role spanned across every pillar of the product to help:",
         bullets: [
           "Drive visual consistency, patterns and best practice for visualizing data",
@@ -383,6 +429,8 @@ export const projects: Project[] = [
               type: "video",
               src: "/images/agentic/Agentic%20dashboard%20creation.mov",
               alt: "Agentic dashboard creation, showing a chat conversation turning a question into a custom dashboard.",
+              caption:
+                "V0 vision prototype used for early conversations about the vision and direction.",
             },
           },
         ],
@@ -398,6 +446,8 @@ export const projects: Project[] = [
           type: "video",
           src: "/images/agentic/agentic-dashboard%20.mov",
           alt: "Agentic dashboard design walkthrough.",
+          caption:
+            "Claude Design prototype used for conversations and engineering handoff.",
         },
       },
       {
@@ -432,9 +482,31 @@ export const projects: Project[] = [
           {
             heading: "Partnering with engineering",
             paragraphs: [
-              "I ran design reviews on the working build and turned them into specific fixes for layout, responsiveness and chart labels. I also set up a routine of quick design check-ins whenever an engineer picked up a frontend task, which kept design and engineering aligned all the way through.",
+              "I ran design reviews on the working build and turned them into specific fixes for layout, responsiveness and chart labels. I also set up a routine of quick design check-ins whenever an engineer picked up a frontend task, which kept design and engineering aligned all the way through. I contributed small PR updates to the component library and product.",
             ],
-            media: null,
+            media: [
+              {
+                type: "image",
+                src: "/images/agentic/PR%20Gif%201.gif",
+                alt: "Omnichannel attribution chart and table, with a cursor hovering the Active on site column.",
+                caption:
+                  "Contributing to the production code, before and after switching stacked bar charts on a time series to a stacked area chart.",
+              },
+              {
+                type: "image",
+                src: "/images/agentic/PR%20Gif%202.gif",
+                alt: "Customer Hub overview with a stacked bar chart of attributed revenue.",
+                caption:
+                  "Contributing to the production code, before and after switching stacked bar charts on a time series to a stacked area chart.",
+              },
+              {
+                type: "image",
+                src: "/images/agentic/PR%20Gif%203.gif",
+                alt: "Deliverability email rates beside a line chart of open rate and click rate.",
+                caption:
+                  "Mentored our animation designer in using Cursor to add motion design to our existing components.",
+              },
+            ],
           },
         ],
       },

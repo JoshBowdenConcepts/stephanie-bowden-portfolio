@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton/BackButton";
+import Caption from "@/components/Caption/Caption";
 import Carousel from "@/components/Carousel/Carousel";
 import ComingSoonIllustration from "@/components/ComingSoonIllustration/ComingSoonIllustration";
 import Hero from "@/components/Hero/Hero";
@@ -9,6 +10,7 @@ import Lightbox from "@/components/Lightbox/Lightbox";
 import Metrics from "@/components/Metrics/Metrics";
 import PageNav from "@/components/PageNav/PageNav";
 import ProjectLayout from "@/components/ProjectLayout/ProjectLayout";
+import SectionDetails from "@/components/SectionDetails/SectionDetails";
 import Testimonial from "@/components/Testimonial/Testimonial";
 import { getProject, projects, type ProjectMedia } from "@/data/projects";
 import styles from "./page.module.css";
@@ -48,11 +50,14 @@ function SectionMedia({
     );
   }
   return (
-    <Lightbox
-      media={media}
-      src={`${basePath}${media.src}`}
-      className={styles.media}
-    />
+    <>
+      <Lightbox
+        media={media}
+        src={`${basePath}${media.src}`}
+        className={styles.media}
+      />
+      {media.caption && <Caption>{media.caption}</Caption>}
+    </>
   );
 }
 
@@ -141,6 +146,7 @@ export default async function ProjectPage({
                 ))}
               </div>
             )}
+            {section.details && <SectionDetails items={section.details} />}
             <SectionMedia media={section.media} />
             {section.more?.map((block, index) => (
               <Fragment key={index}>

@@ -6,7 +6,14 @@
 }
 
 .stage {
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.stage:has(.placeholder) {
+  aspect-ratio: 16 / 10;
 }
 
 .placeholder {
@@ -14,9 +21,13 @@
 }
 
 .image {
+  display: block;
   width: 100%;
+  height: auto;
+}
+
+.stage .placeholder {
   height: 100%;
-  object-fit: contain;
 }
 
 .controls {
@@ -90,12 +101,14 @@
     border-color 0.2s;
 }
 
-.thumb img {
+.thumb img,
+.thumb video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top left;
+  pointer-events: none;
 }
 
 .thumb:hover {
@@ -125,10 +138,6 @@
 }
 
 @media (min-width: 768px) {
-  .stage {
-    aspect-ratio: 16 / 10;
-  }
-
   .thumb {
     width: 88px;
     height: 60px;

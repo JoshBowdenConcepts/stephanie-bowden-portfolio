@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Caption from "@/components/Caption/Caption";
 import Lightbox from "@/components/Lightbox/Lightbox";
 import type { ProjectMedia } from "@/data/projects";
 import styles from "./Carousel.module.css";
@@ -86,6 +87,7 @@ export default function Carousel({
         activeIndex={index}
         onSelect={setIndex}
       />
+      {"caption" in current && current.caption && <Caption>{current.caption}</Caption>}
       <p className={styles.srOnly} aria-live="polite">
         Image {index + 1} of {count}: {current.alt}
       </p>
@@ -109,10 +111,21 @@ export default function Carousel({
                 aria-label={`Show image ${itemIndex + 1} of ${count}`}
                 aria-current={itemIndex === index ? "true" : undefined}
               >
-                {item.type !== "placeholder" && (
+                {item.type === "video" ? (
+                  <video
+                    src={`${basePath}${item.src}#t=0.1`}
+                    muted
+                    playsInline
+                    preload="auto"
+                    onLoadedMetadata={(event) => {
+                      const video = event.currentTarget;
+                      if (video.currentTime < 0.1) video.currentTime = 0.1;
+                    }}
+                  />
+                ) : item.type !== "placeholder" ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={`${basePath}${item.src}`} alt="" loading="lazy" />
-                )}
+                ) : null}
               </button>
             </li>
           ))}

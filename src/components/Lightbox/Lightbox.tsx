@@ -349,10 +349,21 @@ export default function Lightbox({
                       aria-label={`Show image ${thumbnailIndex + 1} of ${thumbnails.length}`}
                       aria-current={thumbnailIndex === activeIndex ? "true" : undefined}
                     >
-                      {thumbnail.media.type !== "placeholder" && (
+                      {thumbnail.media.type === "video" ? (
+                        <video
+                          src={`${thumbnail.src}#t=0.1`}
+                          muted
+                          playsInline
+                          preload="auto"
+                          onLoadedMetadata={(event) => {
+                            const video = event.currentTarget;
+                            if (video.currentTime < 0.1) video.currentTime = 0.1;
+                          }}
+                        />
+                      ) : thumbnail.media.type !== "placeholder" ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={thumbnail.src} alt="" />
-                      )}
+                      ) : null}
                     </button>
                   </li>
                 ))}
