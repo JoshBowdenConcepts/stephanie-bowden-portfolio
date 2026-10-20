@@ -21,7 +21,7 @@ export type ProjectMedia = MediaFile | MediaPlaceholder;
 export interface ProjectSection {
   id: string;
   title: string;
-  intro?: string;
+  intro?: string | string[];
   bullets?: string[];
   paragraphs?: string[];
   details?: { label: string; text: string }[];
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     title: "Ascent Design Systems",
     subtitle: "Klaviyo",
     description:
-      "As one of the founding designers on Klaviyo’s Design System team, I led the creation and evolution of a Data Visualization library that now powers analytics and reporting experiences across the platform. My work focused on enabling a team of 50+ product designers to build consistent and meaningful data experiences.",
+      "As one of the founding designers on Klaviyo’s Design System team, I led the creation and evolution of a Data Visualization library that now powers analytics experiences across the platform. My work focused on enabling a team of 50+ product designers to build consistent and meaningful data experiences.",
     thumbnail: {
       src: "/images/ascent/Ascent-thumbnail.png",
       alt: "Ascent design system documentation site showing the Chart Popover specs page with an interactive stacked bar chart example.",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       {
         value: "20+",
         label: "components",
-        caption: "designed with over 100 instances across the product",
+        caption: "designed with continued iteration",
       },
       {
         value: "100+",
@@ -100,15 +100,12 @@ export const projects: Project[] = [
         id: "the-problem",
         title: "The problem",
         intro:
-          "When I joined, patterns and visuals were inconsistent and at times outdated or broken.",
-        bullets: [
-          "Chart patterns and visuals varied widely across teams",
-          "Designers and engineers often rebuilt similar solutions for each product area",
-          "Accessibility issues existed in color usage and chart affordances",
-          "Constrained to a prebuilt charting library (Recharts), that didn’t meet our growing needs and design preferences",
-        ],
-        paragraphs: [
           "As the platform scaled and the company went through a large rebrand, it was critical for the product to establish reusable scalable components and patterns to improve usability, establish trust in our data, and improve both design and engineerings speed.",
+        bullets: [
+          "Patterns and visuals were inconsistent and at times outdated or broken",
+          "Design and engineering often rebuilt similar solutions",
+          "Accessibility issues in color usage and chart affordances",
+          "Constrained to a pre-built charting library that didn’t meet growing needs",
         ],
         details: [
           {
@@ -120,17 +117,39 @@ export const projects: Project[] = [
             text: "Component Library Engineers, Product designers across the product pillars, Product Managers, Product Engineers",
           },
         ],
-        media: null,
+        media: [
+          {
+            type: "image",
+            src: "/images/ascent/Klaviyo-old.jpg",
+            alt: "Earlier Klaviyo campaign report with an area chart of opens and clicks above campaign stats.",
+            caption: "Klaviyo before the Ascent Design System and company rebrand.",
+          },
+          {
+            type: "image",
+            src: "/images/ascent/Klaviyo-Dashboard-old.png",
+            alt: "Earlier Klaviyo analytics dashboard with metric cards, a stacked bar chart of revenue, and a campaign revenue table.",
+            caption: "Klaviyo before the Ascent Design System and company rebrand.",
+          },
+          {
+            type: "image",
+            src: "/images/ascent/Klaviyo-Email-Marketing-Dashboard-old.jpg",
+            alt: "Earlier Klaviyo revenue board with metric cards, bar and line charts, and a campaign revenue table.",
+            caption: "Klaviyo before the Ascent Design System and company rebrand.",
+          },
+        ],
       },
       {
         id: "discovery",
-        title: "Discovery",
+        title: "Discovery & roadmap",
         intro:
           "I did iterative rounds of discovery through auditing the data experience across the entire product. Met with designers, product managers, engineers and customers to help uncover:",
         bullets: [
           "Gaps in chart types and interactions",
           "Inconsistent patterns and behaviors across similar data experiences",
           "Opportunities to standardize without limiting product expression",
+        ],
+        paragraphs: [
+          "I owned the roadmap and planning for each component and feature release, working with the product teams to align with their teams' roadmaps.",
         ],
         media: {
           type: "image",
@@ -140,23 +159,57 @@ export const projects: Project[] = [
       },
       {
         id: "design",
-        title: "Design",
-        paragraphs: [
-          "My process involved deep thinking, collaboration, detailed design, documentation and mentorship to ensure I was designing components that were consistent but scaled well.",
+        title: "Design process",
+        intro:
+          "My process involved collaboration, detailed design, documentation and mentorship to ensure I was designing components that were consistent but scaled well.",
+        bullets: [
+          "Meet with the users and product teams to understand the needs",
+          "Competitive research",
+          "Design iteration and feedback sessions",
+          "Detailed technical specs for engineering to build the component with variants and prop considerations",
+          "Final Figma component for designers to quickly prototype consistent designs",
+          "Detailed documentation for product teams to reference on component usage and best practices",
         ],
         media: null,
         more: [
           {
-            heading: "Chart filtering",
+            heading: "Chart legend filtering",
             paragraphs: [
-              "Chart filtering was inconsistent across the product, with dropdown menus blocking the data and duplicating legend content, which made for a poor user experience. I designed a consistent filtering pattern and partnered with product teams to roll it out across the product.",
+              "Chart filtering was inconsistent across the product, with dropdown menus blocking the data and duplicating legend content, which made for a poor user experience.",
+              "I started with ideation research on interaction patterns for chart legend filtering and then held feedback sessions for design iterations.",
             ],
             media: [
               {
-                type: "video",
-                src: "/images/ascent/growth-filtering-b%26a.mov",
-                alt: "Before and after of chart filtering on a growth chart.",
+                type: "image",
+                src: "/images/ascent/chart%20filtering%20competitive%20analysis.svg",
+                alt: "Competitive analysis of chart filtering patterns.",
+                caption: "Ideation research on interaction patterns for chart legend filtering.",
               },
+              {
+                type: "image",
+                src: "/images/ascent/Design%20Iteration%20chart%20legend.svg",
+                alt: "Design iterations for chart legend filtering.",
+                caption: "Iterations for design feedback.",
+              },
+            ],
+          },
+          {
+            heading: "Usability research",
+            paragraphs: [
+              "When stakeholders disagreed on which interaction would be best for the customer, I used usability testing to advocate for the interaction pattern that improved clarity, accessibility, and overall experience.",
+            ],
+            media: {
+              type: "image",
+              src: "/images/ascent/research2.gif",
+              alt: "Recording of a remote usability session: a participant toggles the Clicks, Conversions, Delivered, and Opens legend items on a Campaign Performance line chart prototype.",
+            },
+          },
+          {
+            heading: "Final design",
+            paragraphs: [
+              "The final design simplifies the chart filtering interaction into a single pattern that is scalable across the product. After completing this design I worked across the product teams to update this pattern within the product.",
+            ],
+            media: [
               {
                 type: "video",
                 src: "/images/ascent/deliverability-filtering-b%26a.mov",
@@ -167,23 +220,15 @@ export const projects: Project[] = [
                 src: "/images/ascent/engagment-filtering-b%26a.mov",
                 alt: "Before and after of chart filtering on an engagement chart.",
               },
+              {
+                type: "video",
+                src: "/images/ascent/growth-filtering-b%26a.mov",
+                alt: "Before and after of chart filtering on a growth chart.",
+              },
             ],
           },
           {
-            heading: "Usability research",
-            paragraphs: [
-              "Iterated on design solutions and integrated user research and customer data into design decisions, particularly for complex chart interactions.",
-              "Used usability testing and customer insights to advocate for interaction details that improved clarity, accessibility, and overall experience.",
-              "Cross-functional collaboration with product managers and engineers to align design intent with technical feasibility, iterating collaboratively when constraints arose.",
-            ],
-            media: {
-              type: "image",
-              src: "/images/ascent/research2.gif",
-              alt: "Recording of a remote usability session: a participant toggles the Clicks, Conversions, Delivered, and Opens legend items on a Campaign Performance line chart prototype.",
-            },
-          },
-          {
-            heading: "Chart click interactions",
+            heading: "Design spec",
             paragraphs: [
               "For each component I created detailed design specs that defined the visual details and behaviors required to scale the components. Including:",
             ],
@@ -194,33 +239,11 @@ export const projects: Project[] = [
               { text: "Accessibility - color, font, keyboard interactions" },
               { text: "Figma component used by all the designers to create their designs" },
             ],
-            media: [
-              {
-                type: "image",
-                src: "/images/ascent/click-interactions-full-spec.svg",
-                alt: "Overview of the chart click interactions spec, organized into four parts: Concept, Guidelines, Technical Information, and Future Work.",
-              },
-          {
-            type: "image",
-            src: "/images/ascent/click-interactions-concept2.svg",
-            alt: "Concept section of the spec: an introduction to chart click interactions and a component anatomy diagram labeling the selected state border, Chart Popover, close button, title, chart detail, and chart actions.",
-          },
-          {
-            type: "image",
-            src: "/images/ascent/click-interactions-funnels.svg",
-            alt: "Funnel chart guidelines showing single select, select all by column, select all by row, and multi select states with the Chart Popover.",
-          },
-          {
-            type: "image",
-            src: "/images/ascent/chart-click-interactions-bar.svg",
-            alt: "Bar chart guidelines showing single select, select all, and multi select states across stacked, grouped, and positive-negative bar charts.",
-          },
-          {
-            type: "image",
-            src: "/images/ascent/click-interactions-line.svg",
-            alt: "Line chart guidelines showing single select, select all by baseline grouping, select all by category, and multi select states with the Chart Popover.",
-          },
-            ],
+            media: {
+              type: "image",
+              src: "/images/ascent/chart%20filtering%20spec.svg",
+              alt: "Design spec for the chart filtering pattern.",
+            },
           },
         ],
       },
@@ -245,30 +268,71 @@ export const projects: Project[] = [
         },
       },
       {
-        id: "my-role",
-        title: "Supporting product",
-        intro: "My role spanned across every pillar of the product to help:",
+        id: "measuring-success",
+        title: "Measuring success",
+        intro:
+          "Driving adoption and tracking the success of the components across the product was an important part of our team’s process. We measured success through:",
         bullets: [
-          "Drive visual consistency, patterns and best practice for visualizing data",
-          "Documented usage guidelines and specs as resources for product teams",
-          "Mentored peers, provided thoughtful critique on core product features, and guided designers contributing to the design system.",
-          "Facilitated design studios, co-led weekly data experience office hours, and supported onboarding of new team members.",
+          "Weekly office hours feedback",
+          "Usability testing with customers",
+          "Customer support tickets",
+          "Design system feedback form",
+          "Design system request form",
         ],
-        paragraphs: [
-          "For larger efforts, I would embed onto pillar teams to dive deep into problem solving.",
-        ],
-        media: {
-          type: "video",
-          src: "/images/ascent/RFM-overview.mov",
-          alt: "Walkthrough of Klaviyo’s marketing analytics, including a funnel analysis showing drop-off from clicked email to placed order.",
-        },
+        media: null,
         more: [
           {
-            paragraphs: [
-              "I joined the pillar team to bring systems-level thinking and data visualization best practices to a net-new RFM analytics experience. Marketers had customer data, but it lived in spreadsheets and disconnected metrics, so they struggled to prioritize who to target, see how engagement changed over time, or decide what to do next.",
-              "After aligning with the Product Pillar Triad on goals, constraints, and success metrics, and building on early research from the PM and Pillar Designer, I focused on visualizing customer data as movement and progression. The designs unified fragmented data into clear visuals, revealed risk and opportunity between segments, and let marketers trigger campaigns and flows directly from what they saw, turning analytics into a decision engine.",
+            metrics: [
+              {
+                value: "100%",
+                label: "Product team adoption",
+                caption: "All product teams actively used Ascent components in 2025.",
+              },
+              {
+                value: "8.8/10",
+                label: "satisfaction",
+                caption: "Up from 7.1/10 in early 2024.",
+              },
+              {
+                value: "+24%",
+                label: "Satisfaction improvement",
+                caption: "Relative increase from early 2024 through late 2025.",
+              },
             ],
             media: null,
+          },
+        ],
+      },
+      {
+        id: "my-role",
+        title: "Pillar team support",
+        paragraphs: [
+          "For larger efforts, I would embed onto pillar teams to dive deep into a new feature or problem space. I partnered with the analytics product team to bring systems-level thinking and data visualization best practices to a net-new RFM analytics experience.",
+        ],
+        media: null,
+        more: [
+          {
+            heading: "The problem",
+            paragraphs: [
+              "Customers had data that lived in spreadsheets and disconnected metrics, so they struggled to prioritize who to target, see how engagement changed over time, or decide what to do next.",
+            ],
+            media: {
+              type: "image",
+              src: "/images/ascent/RFM%20competitive.svg",
+              alt: "Competitive analysis of RFM analytics experiences.",
+              caption: "Competitive analysis and ideation research for illustrating RFM data.",
+            },
+          },
+          {
+            paragraphs: [
+              "After aligning with the Product Pillar Triad on goals, constraints, and success metrics, and building on early research from the PM and Pillar Designer, I focused on visualizing customer data as movement and progression. The designs unified fragmented data into clear visuals, revealed risk and opportunity between segments, and let marketers trigger campaigns and flows directly from what they saw, turning analytics into a decision engine.",
+            ],
+            media: {
+              type: "image",
+              src: "/images/ascent/Design%20Iterations%20RFM.svg",
+              alt: "Design iterations for the RFM analytics experience.",
+              caption: "Design iterations for RFM analysis.",
+            },
           },
           {
             heading: "Key insights into my role",
@@ -286,9 +350,14 @@ export const projects: Project[] = [
                 text: "Together, the two visualizations help users understand what’s happening and confidently decide which customer segments to target.",
               },
             ],
-            media: null,
+            media: {
+              type: "video",
+              src: "/images/ascent/RFM-overview.mov",
+              alt: "Walkthrough of Klaviyo’s marketing analytics, including a funnel analysis showing drop-off from clicked email to placed order.",
+            },
           },
           {
+            heading: "Customer success stories",
             metrics: [
               {
                 value: "$6.5K",

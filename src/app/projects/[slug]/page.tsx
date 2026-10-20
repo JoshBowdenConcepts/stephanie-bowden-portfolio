@@ -17,6 +17,14 @@ import styles from "./page.module.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+function subsectionId(sectionId: string, heading: string) {
+  const slug = heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return `${sectionId}-${slug}`;
+}
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -104,9 +112,15 @@ export default async function ProjectPage({
         nav={
           <PageNav
             label="On this page"
-            items={project.sections.map(({ id, title }) => ({
+            items={project.sections.map(({ id, title, more }) => ({
               id,
               label: title,
+              children: more
+                ?.filter((block) => block.heading)
+                .map((block) => ({
+                  id: subsectionId(id, block.heading!),
+                  label: block.heading!,
+                })),
             }))}
           />
         }
@@ -133,7 +147,9 @@ export default async function ProjectPage({
             </h2>
             {(section.intro || section.bullets || section.paragraphs) && (
               <div className={styles.description}>
-                {section.intro && <p>{section.intro}</p>}
+                {[section.intro ?? []].flat().map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
                 {section.bullets && (
                   <ul>
                     {section.bullets.map((bullet) => (
@@ -153,7 +169,12 @@ export default async function ProjectPage({
                 {(block.heading || block.paragraphs || block.bullets) && (
                   <div className={`${styles.description} ${styles.more}`}>
                     {block.heading && (
-                      <h3 className={styles.subheading}>{block.heading}</h3>
+                      <h3
+                        id={subsectionId(section.id, block.heading)}
+                        className={styles.subheading}
+                      >
+                        {block.heading}
+                      </h3>
                     )}
                     {block.paragraphs?.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>

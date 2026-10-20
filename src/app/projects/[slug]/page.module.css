@@ -27,7 +27,8 @@
 }
 
 .more:has(> .subheading:first-child),
-.title + .more {
+.title + .more,
+.description + .more:has(> p:first-child) {
   margin-top: 0;
 }
 
@@ -58,6 +59,10 @@
 .description strong {
   font-weight: var(--weight-semibold);
   color: var(--color-text);
+}
+
+.subheading {
+  scroll-margin-top: 72px;
 }
 
 .description > .subheading {
