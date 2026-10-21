@@ -406,59 +406,25 @@ export const projects: Project[] = [
           "Customers wanted more flexibility and insight into their data but data was spread across the product and the dashboard page was bogged down by data heavy reports with a limited set of prebuilt views. This made it challenging for customers to organize their data around their own mental models.",
           "Beyond a more flexible data experience, customers also needed better ways of understanding their data and insights into how they could improve important metrics.",
         ],
-        media: null,
+        media: {
+          type: "video",
+          src: "/images/agentic/Dashbaord%20test.mov",
+          alt: "Walkthrough of the existing Klaviyo dashboard page, with stacked report cards for deliverability and funnel summary.",
+          caption: "Klaviyo’s old dashboard experience with limited ways to customize and organize dashboards.",
+        },
       },
       {
         id: "discovery",
         title: "The users",
-        media: null,
-        more: [
-          {
-            heading: "Pain points",
-            bullets: [
-              {
-                text: "Entrepreneur: Doesn’t know which metrics matter or whether a number is good or bad, and can’t tell what is helping or hurting performance. Too many tabs to flip through.",
-              },
-              {
-                text: "SMB / Mid-Market: Hard to find the cause of a dip, and charts can’t be compared across areas. Detailed views show too much at once, and custom dashboards are limited to about 10 prebuilt widgets.",
-              },
-              {
-                text: "Enterprise: Klaviyo’s dashboard isn’t where analysis happens; it’s one source checked against their own data.",
-              },
-            ],
-            media: null,
-          },
-          {
-            heading: "Workarounds",
-            bullets: [
-              {
-                text: "Entrepreneur: Leans on home page numbers and prebuilt dashboards, and digs through the data manually.",
-              },
-              {
-                text: "SMB / Mid-Market: Takes screenshots for PowerPoint, builds documents and spreadsheets, and pulls data into BI tools, which lose the bigger picture.",
-              },
-              {
-                text: "Enterprise: Exports data to Snowflake and their own data warehouse, where analysts work outside Klaviyo.",
-              },
-            ],
-            media: null,
-          },
-          {
-            heading: "Asks",
-            bullets: [
-              {
-                text: "Entrepreneur: A simple view of what matters, the ability to choose metrics on prebuilt dashboards, suggestions for improving a metric, and alerts when something is low.",
-              },
-              {
-                text: "SMB / Mid-Market: Their own organized dashboards with different views, free choice of data, and easy sharing with a manager.",
-              },
-              {
-                text: "Enterprise: Access to data so that it can be hooked into existing data warehouses. Use Klaviyo data as the source of truth.",
-              },
-            ],
-            media: null,
-          },
+        intro:
+          "We were getting a lot of requests from customers for more flexibility in creating charts and dashboards. Customers wanted to dig into their specific data questions and have guidance on understanding and taking actions off the data. In the existing dashboard space, users struggled to sift through the many metrics layered behind progressive disclosures, and to organize the data in a way that made sense to them and to the stakeholders they shared it with.",
+        bullets: [
+          "Customers couldn’t tell which metrics mattered or whether a number was good or bad",
+          "Finding the cause of a dip was difficult, and charts couldn’t be compared across areas",
+          "Custom dashboards were limited to about 10 prebuilt widgets, and detailed views showed too much at once",
+          "Teams relied on screenshots, spreadsheets, BI tools, and warehouse exports to analyze data outside the product",
         ],
+        media: null,
       },
       {
         id: "the-vision",

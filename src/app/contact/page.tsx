@@ -1,7 +1,37 @@
 import type { Metadata } from "next";
 import BackButton from "@/components/BackButton/BackButton";
+import Collage from "@/components/Collage/Collage";
 import Hero from "@/components/Hero/Hero";
 import styles from "./page.module.css";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const collageImages = [
+  {
+    src: `${basePath}/images/IMG_1321.jpeg`,
+    alt: "Terraced tea plantation on rolling hills at sunset.",
+  },
+  {
+    src: `${basePath}/images/IMG_2902.jpeg`,
+    alt: "A tricolor hound standing on a rocky trail beside yellow goldenrod.",
+  },
+  {
+    src: `${basePath}/images/IMG_5525.jpeg`,
+    alt: "Bright pink bougainvillea climbing a white wall under a blue sky.",
+  },
+  {
+    src: `${basePath}/images/IMG_5914.jpeg`,
+    alt: "Stephanie and her partner smiling pitchside at Anfield stadium.",
+  },
+  {
+    src: `${basePath}/images/IMG_8720.jpeg`,
+    alt: "Sea cliffs above the ocean at dusk.",
+  },
+  {
+    src: `${basePath}/images/IMG_9124.jpeg`,
+    alt: "An adult’s and a toddler’s bare feet side by side in dark beach sand.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Contact | Stephanie Bowden",
@@ -50,6 +80,7 @@ export default function ContactPage() {
             </dd>
           </div>
         </dl>
+        <Collage className={styles.collage} images={collageImages} />
       </section>
     </main>
   );

@@ -1,0 +1,30 @@
+.collage {
+  columns: 2;
+  column-gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+  .collage {
+    columns: 3;
+    column-gap: 16px;
+  }
+
+  .item {
+    margin-bottom: 16px;
+  }
+}
