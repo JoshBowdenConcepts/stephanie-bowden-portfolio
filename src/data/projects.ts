@@ -39,6 +39,8 @@ export interface ProjectBullet {
 export interface ProjectSectionBlock {
   paragraphs?: string[];
   heading?: string;
+  /** Bold lead-in above the paragraphs; unlike `heading`, not listed in the page nav. */
+  label?: string;
   bullets?: ProjectBullet[];
   metrics?: Metric[];
   media?: ProjectMedia | ProjectMedia[] | null;
@@ -430,33 +432,26 @@ export const projects: Project[] = [
         id: "the-vision",
         title: "The vision",
         paragraphs: [
-          "Designed a mid-fi prototype using V0 to get feedback on the longer term vision. Here are some key themes I explored in this vision:",
+          "Designed a mid-fi prototype using V0 to get feedback on the longer term vision. Here are some key themes:",
         ],
         media: null,
         more: [
           {
-            heading: "1. Ask questions of your data in plain language",
+            label: "Ask questions of your data in plain language",
             paragraphs: [
               "Customers build a dashboard by asking a question in plain language instead of setting up reports by hand. Composer, Klaviyo’s AI assistant, turns the question into a chart, and opening it from a dashboard gives it context about what you’re looking at, so follow-up questions pick up where you left off.",
             ],
             media: null,
           },
           {
-            heading: "2. Keep the answers that matter",
+            label: "A canvas that fits how you work",
             paragraphs: [
-              "Some questions are answered once and forgotten, and others you come back to every week. A useful chart shouldn’t disappear when the chat ends. Customers can pin it to a dashboard where it stays, ready to revisit and monitor over time.",
+              "The dashboard is a flexible canvas that lets you drag, resize and rearrange charts around your own priorities, and the layout holds its shape as the screen changes. It’s one dashboard experience that works alongside existing dashboards rather than splitting into two separate products.",
             ],
             media: null,
           },
           {
-            heading: "3. A canvas that fits how you work",
-            paragraphs: [
-              "The dashboard is a flexible canvas. Customers can drag, resize and rearrange charts around their own priorities, and the layout holds its shape as the screen changes. It’s one dashboard experience that works alongside existing dashboards rather than splitting into two separate products.",
-            ],
-            media: null,
-          },
-          {
-            heading: "4. From insight to action",
+            label: "From insight to action",
             paragraphs: [
               "A dashboard should help you decide what to do next. Each chart can carry a short insight explaining what it shows, dashboards can be shared with the people who need them, and the long-term aim is for Composer to suggest the next step, like starting a campaign when a trend changes.",
             ],
@@ -466,6 +461,16 @@ export const projects: Project[] = [
               alt: "Agentic dashboard creation, showing a chat conversation turning a question into a custom dashboard.",
               caption:
                 "V0 vision prototype used for early conversations about the vision and direction.",
+            },
+          },
+          {
+            paragraphs: [
+              "I led the planning of the roadmap for this project by working with engineering, product leadership and design leadership to determine incremental milestones for this effort.",
+            ],
+            media: {
+              type: "image",
+              src: "/images/agentic/milestone-planning.png",
+              alt: "Flexible Dashboards release plan spreadsheet listing requirements grouped by milestone, from MVP through M2, M3, M4 and post-MVP.",
             },
           },
         ],

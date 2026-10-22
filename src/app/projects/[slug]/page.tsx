@@ -166,7 +166,10 @@ export default async function ProjectPage({
             <SectionMedia media={section.media} />
             {section.more?.map((block, index) => (
               <Fragment key={index}>
-                {(block.heading || block.paragraphs || block.bullets) && (
+                {(block.heading ||
+                  block.label ||
+                  block.paragraphs ||
+                  block.bullets) && (
                   <div className={`${styles.description} ${styles.more}`}>
                     {block.heading && (
                       <h3
@@ -175,6 +178,9 @@ export default async function ProjectPage({
                       >
                         {block.heading}
                       </h3>
+                    )}
+                    {block.label && (
+                      <p className={styles.label}>{block.label}</p>
                     )}
                     {block.paragraphs?.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
