@@ -524,6 +524,19 @@ export const projects: Project[] = [
             paragraphs: [
               "I ran design reviews on the working build and turned them into specific fixes for layout, responsiveness and chart labels. I also set up a routine of quick design check-ins whenever an engineer picked up a frontend task, which kept design and engineering aligned all the way through. I contributed small PR updates to the component library and product.",
             ],
+            media: {
+              type: "video",
+              src: "/images/agentic/Design-feedback-flex-dash.mov",
+              alt: "Design feedback walkthrough of the flexible dashboard, reviewing layout, responsiveness, and chart labels.",
+              caption:
+                "Design feedback on the working build, covering layout, responsiveness, and chart labels.",
+            },
+          },
+          {
+            heading: "Code contributions",
+            paragraphs: [
+              "While working on this project, I made a few contributions to the code including updating our component library components using Cursor and partnering with engineers to make sure the code met our teams standards.",
+            ],
             media: [
               {
                 type: "image",
